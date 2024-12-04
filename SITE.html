@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+        .product {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .product h3 {
+            margin: 1rem 0 0.5rem;
+        }
+        .product p {
+            color: #555;
+            font-size: 0.9rem;
+        }
+        .product button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .product button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        /* Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            padding: 1.5rem;
+            text-align: center;
+            z-index: 1000;
+        }
+        .popup h3 {
+            margin-bottom: 1rem;
+        }
+        .popup p {
+            margin-bottom: 1.5rem;
+        }
+        .popup button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup button:hover {
+            background-color: #a71d2a;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to iPhone Store</h1>
+        <p>Find your next iPhone at unbeatable prices!</p>
+    </header>
+
+    <div class="products">
+        <div class="product">
+            <img src="https://via.placeholder.com/300" alt="iPhone 11">
+            <h3>iPhone 11</h3>
+            <p>Price: R3000</p>
+            <button onclick="showPopup('iPhone 11', 'Features: Dual Camera, Face ID, A13 Bionic Chip, 6.1-inch Display.')">Details</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/300" alt="iPhone 11 Pro">
+            <h3>iPhone 11 Pro</h3>
+            <p>Price: R3500</p>
+            <button onclick="showPopup('iPhone 11 Pro', 'Features: Triple Camera, Face ID, A13 Bionic Chip, 5.8-inch Display.')">Details</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/300" alt="iPhone 12">
+            <h3>iPhone 12</h3>
+            <p>Price: R5000</p>
+            <button onclick="showPopup('iPhone 12', 'Features: Dual Camera, Ceramic Shield, A14 Bionic Chip, 6.1-inch Display.')">Details</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/300" alt="iPhone 13 Mini">
+            <h3>iPhone 13 Mini</h3>
+            <p>Price: R6000</p>
+            <button onclick="showPopup('iPhone 13 Mini', 'Features: Dual Camera, A15 Bionic Chip, Compact 5.4-inch Display.')">Details</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/300" alt="iPhone 6s">
+            <h3>iPhone 6s</h3>
+            <p>Price: R1200</p>
+            <button onclick="showPopup('iPhone 6s', 'Features: 12MP Camera, 3D Touch, A9 Chip, 4.7-inch Display.')">Details</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/300" alt="iPhone 8 Plus">
+            <h3>iPhone 8 Plus</h3>
+            <p>Price: R1600</p>
+            <button onclick="showPopup('iPhone 8 Plus', 'Features: Dual Camera, A11 Bionic Chip, 5.5-inch Display.')">Details</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 iPhone Store. All rights reserved.</p>
+    </footer>
+
+    <!-- Popup -->
+    <div class="overlay" onclick="closePopup()"></div>
+    <div class="popup" id="popup">
+        <h3 id="popup-title"></h3>
+        <p id="popup-description"></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        function showPopup(title, description) {
+            document.getElementById('popup-title').innerText = title;
+            document.getElementById('popup-description').innerText = description;
+            document.querySelector('.overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.querySelector('.overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
